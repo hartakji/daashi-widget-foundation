@@ -17,10 +17,17 @@ public protocol WidgetPackDescriptor {
 
     static var widgets: [Widget] { get }
     
-    @ViewBuilder
-    static func makeView<T: WidgetConfigPayload>(for identifier: String, config: T) -> (AnyView, WidgetEventHandlerProtocol)
+    static func configType(
+        for identifier: String
+    ) -> WidgetConfigPayload.Type
     
-    @ViewBuilder
+    @MainActor
+    static func makeView<T: WidgetConfigPayload>(
+        for identifier: String,
+        config: T
+    ) -> (AnyView, WidgetEventHandlerProtocol)
+    
+    @MainActor
     static func makeConfigurator(
         for identifier: String,
         config: (any WidgetConfigPayload)?,
@@ -29,7 +36,7 @@ public protocol WidgetPackDescriptor {
 }
 
 public extension WidgetPackDescriptor {
-    @ViewBuilder
+    @MainActor
     public static func makeConfigurator(
         for identifier: String,
         onSave: @escaping (any WidgetConfigPayload) -> Void
