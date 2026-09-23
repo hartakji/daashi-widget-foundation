@@ -9,8 +9,12 @@ import SwiftUI
 
 public struct WidgetViewModifier: ViewModifier {
     
-    private var idiom: UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
-
+    enum UserInterface {
+        case pad
+        case iphone
+        case unknown
+    }
+    
     internal let size: WidgetSize
     internal let shape: WidgetShape
     internal let color: Color
@@ -56,6 +60,19 @@ public struct WidgetViewModifier: ViewModifier {
         case (.large, .hRectangle):  return CGSize(width: 4*carreSize, height: 3*carreSize)
         }
     }
+    
+    private var idiom: UserInterface {
+#if canImport(UIKit)
+        switch UIDevice.current.userInterfaceIdiom {
+        case .phone: .iphone
+        case .pad: .pad
+        default: .unknown
+        }
+#else
+            .unknown
+#endif
+
+    }
 }
 
 public extension View {
@@ -63,3 +80,4 @@ public extension View {
         modifier(WidgetViewModifier(size: size, shape: shape, color: color))
     }
 }
+

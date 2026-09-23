@@ -75,6 +75,11 @@ struct MyWidgetPackDescriptor: WidgetPackDescriptor {
 }
 ```
 
+## Documentation
+
+- [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md) — how the host app, `WidgetFoundation`, and widget packages fit together, plus the internal Data/Domain/UI layering every widget follows.
+- [`docs/CREATING_A_WIDGET_PACKAGE.md`](./docs/CREATING_A_WIDGET_PACKAGE.md) — step-by-step guide (with code templates) for scaffolding a new widget package or adding a widget to an existing one. Written to be followed by an AI coding agent or a developer.
+
 ## License
 
 This project has no license file yet. All rights reserved unless stated otherwise.

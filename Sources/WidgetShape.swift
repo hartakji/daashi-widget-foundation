@@ -14,7 +14,7 @@ public enum WidgetShape {
 }
 
 public extension Array where Element == WidgetShape {
-    public static var allValues: Self {
+    static var allValues: Self {
         [.square, .vRectangle, .hRectangle]
     }
 }

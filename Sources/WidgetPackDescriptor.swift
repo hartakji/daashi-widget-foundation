@@ -37,7 +37,7 @@ public protocol WidgetPackDescriptor {
 
 public extension WidgetPackDescriptor {
     @MainActor
-    public static func makeConfigurator(
+    static func makeConfigurator(
         for identifier: String,
         onSave: @escaping (any WidgetConfigPayload) -> Void
     ) -> AnyView {

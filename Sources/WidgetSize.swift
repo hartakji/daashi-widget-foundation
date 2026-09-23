@@ -14,7 +14,7 @@ public enum WidgetSize {
 }
 
 public extension Array where Element == WidgetSize {
-    public static var allValues: Self {
+    static var allValues: Self {
         [.small, .medium, .large]
     }
 }
